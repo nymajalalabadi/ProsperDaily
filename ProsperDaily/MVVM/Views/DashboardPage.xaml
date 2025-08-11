@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProsperDaily.MVVM.Views.DashboardPage"
+             Title="DashboardPage">
+
+    <Grid RowDefinitions=".15*, .15*, .15*, .55*">
+
+        <RoundRectangle Grid.Row="0"  Grid.RowSpan="2" StyleClass="TopRectangle" />
+
+        <VerticalStackLayout Grid.Row="0" StyleClass="Header">
+            
+            <Label Text="Good Morning" StyleClass="HeaderTitle" />
+            <Label Text="Nima Jalalabadi" StyleClass="HeaderSubTitle" />
+            
+        </VerticalStackLayout>
+        
+        <Grid Grid.Row="1" Grid.RowSpan="2" StyleClass="BalanceGrid">
+            
+            <RoundRectangle StyleClass="BalanceRectangle" />
+
+            <Grid ColumnDefinitions="*, *" RowDefinitions=".333*, .333*, .333*" StyleClass="Padding25">
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                    <Label Text="Total Balance"  />
+                    <Label Text="$ 10,000.00" StyleClass="StrongTitle" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                    <Label Text="Income"  />
+                    <Label Text="$ 10,000.00" StyleClass="StrongSubTitle" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="Center">
+                    <Label Text="Expenses"  />
+                    <Label Text="$ 10,000.00" StyleClass="StrongSubTitle" />
+                </VerticalStackLayout>
+
+            </Grid>
+            
+        </Grid>
+
+        <Button Grid.Row="2" Text="+" StyleClass="CircularButton" />
+
+        <Grid Grid.Row="3" RowDefinitions=".1*, .9*" StyleClass="Margin15">
+            
+            <Label Grid.Row="0" Text="Recent Transactions" />
+            
+            <CollectionView Grid.Row="1" EmptyView="No Data">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Text="No Data Found, Click on the + button to add a new Transaction" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" 
+                                   StyleClass="NoDataText" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Label Text="{Binding Description}" />
+                            <Label Text="{Binding Amount}" HorizontalOptions="EndAndExpand" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+
+        </Grid>
+
+    </Grid>
+    
+</ContentPage>
