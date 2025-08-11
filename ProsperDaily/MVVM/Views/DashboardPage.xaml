@@ -65,9 +65,10 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
-                            <Label Text="{Binding Description}" />
-                            <Label Text="{Binding Amount}" HorizontalOptions="EndAndExpand" />
+                        <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+                            <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="Transaction"/>
+                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="Today" />
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="$+ 100.00"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
