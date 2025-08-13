@@ -11,7 +11,7 @@ namespace ProsperDaily
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new TransactionPage());
+            return new Window(new StatisticsPage());
         }
     }
 }
