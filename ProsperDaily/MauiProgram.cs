@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using ProsperDaily.MVVM.Models;
+﻿using ProsperDaily.MVVM.Models;
 using ProsperDaily.Repositories;
 using Syncfusion.Maui.Core.Hosting;
 

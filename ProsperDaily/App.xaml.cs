@@ -10,7 +10,10 @@ namespace ProsperDaily
 
         public App(BaseRepository<Transaction> transactionRepository)
         {
+            SQLitePCL.Batteries.Init();
+
             InitializeComponent();
+
             _transactionRepository = transactionRepository;
         }
 
