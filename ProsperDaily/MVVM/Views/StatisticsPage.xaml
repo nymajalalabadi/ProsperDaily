@@ -27,9 +27,10 @@
                     <chart:NumericalAxis />
                 </chart:SfCartesianChart.YAxes>
 
-                <chart:SplineSeries ItemsSource="" XBindingPath="ShownDate" YBindingPath="TransactionsTotal" />
+                <chart:SplineSeries ItemsSource="{Binding TransactionSummaries}" XBindingPath="ShownDate" YBindingPath="TransactionsTotal" />
                 
             </chart:SfCartesianChart>
+
 
 
         </Grid>
@@ -38,7 +39,7 @@
 
             <Label Text="Top Spending" />
 
-            <CollectionView Grid.Row="1" EmptyView="No Data">
+            <CollectionView Grid.Row="1" EmptyView="No Data" ItemsSource="{Binding SpendingList}">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"/>
@@ -58,9 +59,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
-                            <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="Transaction"/>
-                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="Today" />
-                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="$+ 100.00"/>
+                            <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="{Binding Name}"/>
+                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="{Binding OperationDate, StringFormat='{0/MM/dd/yyyy}'}" />
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="{Binding Amount, StringFormat='{0:C}'}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

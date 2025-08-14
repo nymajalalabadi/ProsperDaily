@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProsperDaily.MVVM.Models
 {
-    public class TransactionSummary
+    public class TransactionsSummary
     {
         public DateTime TransactionsDate { get; set; }
 

@@ -10,4 +10,13 @@ public partial class StatisticsPage : ContentPage
 
 		BindingContext = new StatisticsViewModel();
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var vm = (StatisticsViewModel)BindingContext;
+
+        vm.GetTransactionsSummary();
+    }
 }

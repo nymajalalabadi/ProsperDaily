@@ -11,6 +11,7 @@ public partial class TransactionPage : ContentPage
 		BindingContext = new TransactionViewModel();
     }
 
+
     private void Save_Clicked(object sender, EventArgs e)
     {
         var currentVM = (TransactionViewModel)BindingContext;
