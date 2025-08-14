@@ -6,20 +6,20 @@ namespace ProsperDaily
 {
     public partial class App : Application
     {
-        public static BaseRepository<Transaction> _transactionRepository { get; private set; }
+        public static BaseRepository<Transaction> transactionRepository { get; private set; }
 
-        public App(BaseRepository<Transaction> transactionRepository)
+        public App(BaseRepository<Transaction> _transactionRepository)
         {
             SQLitePCL.Batteries.Init();
 
             InitializeComponent();
 
-            _transactionRepository = transactionRepository;
+            transactionRepository = _transactionRepository;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new TransactionPage());
+            return new Window(new NavigationPage(new DashboardPage()));
         }
     }
 }

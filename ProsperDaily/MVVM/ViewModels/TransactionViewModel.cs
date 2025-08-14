@@ -1,21 +1,22 @@
-﻿using ProsperDaily.MVVM.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PropertyChanged;
+using ProsperDaily.MVVM.Models;
 
 namespace ProsperDaily.MVVM.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class TransactionViewModel
     {
-        public Transaction Transaction { get; set; } = new Transaction();
+        public Transaction Transaction { get; set; } = new Transaction()
+        {
+            OperationDate = DateTime.Now,
+        };
+
 
         public string SaveTransaction()
         {
-            App._transactionRepository.SaveItem(Transaction);
-            return App._transactionRepository.StatusMessage;
-        }
+            App.transactionRepository.SaveItem(Transaction);
 
+            return App.transactionRepository.StatusMessage;
+        }
     }
 }

@@ -23,30 +23,30 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="0">
                     <Label Text="Total Balance"  />
-                    <Label Text="$ 10,000.00" StyleClass="StrongTitle" />
+                    <Label Text="{Binding Balance, StringFormat='{0:C}'}" StyleClass="StrongTitle" />
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Label Text="Income"  />
-                    <Label Text="$ 10,000.00" StyleClass="StrongSubTitle" />
+                    <Label Text="{Binding Income, StringFormat='{0:C}'}" StyleClass="StrongSubTitle" />
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="Center">
                     <Label Text="Expenses"  />
-                    <Label Text="$ 10,000.00" StyleClass="StrongSubTitle" />
+                    <Label Text="{Binding Expenses, StringFormat='{0:C}'}" StyleClass="StrongSubTitle" />
                 </VerticalStackLayout>
 
             </Grid>
             
         </Grid>
 
-        <Button Grid.Row="2" Text="+" StyleClass="CircularButton" />
+        <Button Grid.Row="2" Text="+" StyleClass="CircularButton" x:Name="AddTransaction" Clicked="AddTransaction_Clicked"/>
 
         <Grid Grid.Row="3" RowDefinitions=".1*, .9*" StyleClass="Margin15">
             
             <Label Grid.Row="0" Text="Recent Transactions" />
-            
-            <CollectionView Grid.Row="1" EmptyView="No Data">
+
+            <CollectionView Grid.Row="1" EmptyView="No Data" ItemsSource="{Binding Transactions}">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"/>
@@ -66,9 +66,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
-                            <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="Transaction"/>
-                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="Today" />
-                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="$+ 100.00"/>
+                            <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="{Binding Name}"/>
+                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="{Binding OperationDate, StringFormat='{0/MM/dd/yyyy}'}" />
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="{Binding Amount, StringFormat='{0:C}'}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -38,7 +38,7 @@
 
                 <Frame StyleClass="FrameBorder">
 
-                    <DatePicker Date="{Binding Transaction.TransactionDate}"/>
+                    <DatePicker Date="{Binding Transaction.OperationDate}"/>
 
                 </Frame>
 
@@ -48,6 +48,7 @@
                 </HorizontalStackLayout>
 
                 <Button Text="Save" StyleClass="MarginT15" x:Name="Save" Clicked="Save_Clicked"/>
+                
                 <Button Text="Cancel" StyleClass="MarginT15, RedControl" x:Name="Cancel" Clicked="Cancel_Clicked"/>
 
             </VerticalStackLayout>

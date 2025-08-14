@@ -11,20 +11,19 @@ public partial class TransactionPage : ContentPage
 		BindingContext = new TransactionViewModel();
     }
 
-    private async void Save_Clicked(object sender, EventArgs e)
+    private void Save_Clicked(object sender, EventArgs e)
     {
         var currentVM = (TransactionViewModel)BindingContext;
 
         var message = currentVM.SaveTransaction();
 
-        await DisplayAlert("Info", message, "Ok");
+        DisplayAlert("Info", message, "Ok");
 
-        await Navigation.PopToRootAsync();
-
+        Navigation.PopAsync();
     }
 
-    private async void Cancel_Clicked(object sender, EventArgs e)
+    private void Cancel_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        Navigation.PopAsync();
     }
 }

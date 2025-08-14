@@ -27,7 +27,7 @@
                     <chart:NumericalAxis />
                 </chart:SfCartesianChart.YAxes>
 
-                <chart:SplineSeries ItemsSource="{Binding Summary}" XBindingPath="ShownDate" YBindingPath="TransactionsTotal" />
+                <chart:SplineSeries ItemsSource="" XBindingPath="ShownDate" YBindingPath="TransactionsTotal" />
                 
             </chart:SfCartesianChart>
 
