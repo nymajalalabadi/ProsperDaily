@@ -19,7 +19,7 @@ namespace ProsperDaily
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new NavigationPage(new DashboardPage()));
+            return new Window(new NavigationPage(new StatisticsPage()));
         }
     }
 }
