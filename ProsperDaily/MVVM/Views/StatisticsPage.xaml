@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProsperDaily.MVVM.Views.StatisticsPage"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:converters="clr-namespace:ProsperDaily.Converters"
              Title="StatisticsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:AmountToCurrencyConverter x:Key="AmountConverter" />
+            <converters:AmountToColorConverter x:Key="ColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions=".15*, .15*, .30*, .40*">
 
@@ -58,11 +66,20 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+
                         <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+
                             <Label Grid.Row="0" Grid.Column="0" StyleClass="StrongMediumTitle" Text="{Binding Name}"/>
-                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="{Binding OperationDate, StringFormat='{0/MM/dd/yyyy}'}" />
-                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" Text="{Binding Amount, StringFormat='{0:C}'}"/>
+
+                            <Label Grid.Row="1" Grid.Column="0" StyleClass="SmallFont" Text="{Binding HumanDate}" />
+
+                            <Label x:Name="lblIsIncome" IsVisible="False" Text="{Binding IsIncome}" />
+
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" StyleClass="ListAmount" 
+                                   Text="{Binding Amount, Converter={StaticResource AmountConverter}, ConverterParameter={x:Reference lblIsIncome}}"
+                                   TextColor="{Binding Amount, Converter={StaticResource ColorConverter}, ConverterParameter={x:Reference lblIsIncome}}"/>
                         </Grid>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
